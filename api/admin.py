@@ -4,3 +4,5 @@ from .models import *
 
 admin.site.register(Events)
 admin.site.register(Contacts)
+admin.site.register(Schedule)
+admin.site.register(Generalfaqs)
