@@ -15,9 +15,28 @@ class Events(models.Model):
       ("Dead", "Dead"),
     )
 
+    TYPE_CHOICES = (
+      ("Student", "Student"),
+      ("Startup", "Startup"),
+      ("Professional", "Professional"),
+      ("Incubator", "Incubator"),
+      ("Investor","Investor")
+    )
+
+    VENUE_CHOICES = (
+        ("Lecture Hall Complex", "Lecture Hall Complex"),
+        ("SAC", "SAC"),
+        ("OAT", "OAT"),
+        ("SAC Backlawns", "SAC Backlawns"),
+        ("Convocation Hall", "Convocation Hall"),
+        ("Physics Parking Lot", "Physics Parking Lot"),
+        ("SAC Parking Lot", "SAC Parking Lot"),
+    )
+
     # event = models.ForeignKey(
     #     Summitevents, on_delete=models.CASCADE, related_name='event_sub', blank=True, null=True)
     name = models.CharField(null=True, max_length=251, blank=True)
+    type_event = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True, blank=True)
     photo = models.FileField(
         null=True, blank=True)
     icon = models.FileField(
@@ -30,7 +49,7 @@ class Events(models.Model):
     end_minute = models.CharField(max_length=10, blank=True, null=True)
     time_duration = models.CharField(max_length=10, null=True, blank=True)
     location_link = models.TextField(null=True, blank=True)
-    venue = models.TextField(null=True, blank=True)
+    venue = models.CharField(null=True, blank=True, max_length=30, choices=VENUE_CHOICES)
     event_day = models.CharField(max_length=9, choices=DAY_CHOICES)
     status = models.CharField(max_length=9, null=True, blank=True, choices=STATUS_CHOICES)
     description = models.TextField(null=True, blank=True)
